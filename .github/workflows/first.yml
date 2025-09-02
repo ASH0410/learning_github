@@ -18,7 +18,7 @@ jobs:
     - name: Step Two
       run: env | sort 
   job2:
-    #needs: [job1] # Job2 dependent on Job1
+    needs: [job1] # Job2 dependent on Job1
     name: Second job
     runs-on: windows-latest
     steps:
@@ -27,7 +27,7 @@ jobs:
     - name: Step Two
       run: "Get-ChildItem Env: | Sort-Object Name"
   job3:
-    needs: [job1, job2] # Job3 dependent on Job1 and Job2
+    needs: [job2] # Job3 dependent on Job2
     name: Third job
     runs-on: windows-latest
     steps:
