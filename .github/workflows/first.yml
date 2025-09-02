@@ -20,4 +20,13 @@ jobs:
       uses: actions/checkout@v4
     - name: Step Two
       run: "Get-ChildItem Env: | Sort-Object Name"
+  job3:
+    needs: [job1, job2] # Job3 dependent on Job1 and Job2
+    name: Second job
+    runs-on: windows-latest
+    steps:
+    - name: Step One
+      uses: actions/checkout@v4
+    - name: Step Two
+      run: Write-Output "Hello GitHub Actions"
 
